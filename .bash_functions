@@ -9,10 +9,19 @@ function top10() {
 }
 
 #Usage: ii
-RED='\e[1;31m'
-BLUE='\e[1;34m'
-CYAN='\e[1;36m'
-NC='\e[0m'
+if [ `uname` == "Linux" ]; then
+  RED='\e[1;31m'
+  BLUE='\e[1;34m'
+  CYAN='\e[1;36m'
+  NC='\e[0m'
+elif [ `uname` == "Darwin" ]; then
+  RED="\033[0;31m"
+  YELLOW="\033[0;33m"
+  BLUE="\033[0;34m"
+  CYAN="\033[0;36m"
+  GREEN="\033[0;32m"
+  NC="\033[0m"
+fi
 
 function ii(){
     clear
@@ -24,7 +33,6 @@ function ii(){
     echo -e "\n${RED}Memory stats :$NC " ; free -m
     echo -e "\n${RED}Disk usage :$NC " ; df -lh
     echo -e "\n${RED}Local IP Address :$NC" ; /sbin/ifconfig en0 | awk '/inet/ { print $2 } ' | sed -e s/addr://
-    echo -e
-"----------------------------------------------------------------------\n"
+    echo -e "----------------------------------------------------------------------\n"
 }
 
