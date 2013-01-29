@@ -32,7 +32,7 @@ function ii(){
     echo -e "\n${RED}Machine stats :$NC " ; uptime
     echo -e "\n${RED}Memory stats :$NC " ; free -m
     echo -e "\n${RED}Disk usage :$NC " ; df -lh
-    echo -e "\n${RED}Local IP Address :$NC" ; /sbin/ifconfig en0 | awk '/inet/ { print $2 } ' | sed -e s/addr://
+    echo -e "\n${RED}Local IP Address :$NC" ; `which ifconfig` en0 | awk '/inet/ { print $2 } ' | sed -e s/addr://
     echo -e "----------------------------------------------------------------------\n"
 }
 
