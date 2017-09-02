@@ -1,0 +1,13 @@
+## History management
+export HISTFILESIZE=100000000000
+export HISTSIZE=100000000000
+export HISTIGNORE="&:[ ]*:exit"
+export HISTTIMEFORMAT='%x %X '
+shopt -s histappend
+PROMPT_COMMAND="$PROMPT_COMMAND;history -a"
+
+
+tokenizehist(){
+fc -ln -999|tr " "\|\>\<\"\& \\n|grep -E "^$2"|sort -u
+}
+complete -C tokenizehist lpq

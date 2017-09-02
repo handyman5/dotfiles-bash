@@ -1,0 +1,28 @@
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+###
+# Exported environment variables
+###
+export EDITOR="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -t"
+export ALTERNATE_EDITOR="~/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
+#export PAGER="less -R"
+export PATH="/Users/acompton/bin:/usr/local/bin:/usr/local/sbin:$PATH:/Users/acompton/.gem/ruby/1.8/bin:/usr/local/Cellar/ruby/1.9.2-p290/bin:/usr/local/qmr/bin:/opt/qfs/bin:/Users/acompton/Applications/terraform"
+
+export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
+
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+
+###
+# Prompt
+###
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "("${ref#refs/heads/}") "
+}
+if [[ ${EUID} == 0 ]] ; then
+   export PS1="\[\e]2;\u@\H \$(pwd)\a\033[01;36m\]\$(pwd)\[\033[0m\]\n\[\033[1;31m\]\u@\[\033[1;37m\]\$SHORTHOST\[\033[1;31m\]: \[\033[1;34m\]$ \[\033[0m\]"
+else
+    export PS1="$YELLOW\$(parse_git_branch)\[\e]2;\u@\H \$(pwd)\a\e[01;36m\]\$(pwd)\[\e[0m\]\n\[\e[1;32m\]\u@\[\e[1;37m\]\$SHORTHOST\[\e[1;32m\]: \[\e[1;34m\]$ \[\e[0m\]"
+fi

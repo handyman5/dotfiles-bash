@@ -1,0 +1,32 @@
+###
+# Bash Completion
+###
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+###
+# GRC (https://github.com/garabik/grc)
+###
+source "`brew --prefix`/etc/grc.bashrc"
+
+###
+# RVM
+###
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+###
+# virtualenv
+###
+source /usr/local/bin/virtualenvwrapper.sh
+
+###
+# autojump: brew install autojump
+###
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+###
+# LiquidPrompt: https://github.com/nojhan/liquidprompt
+###
+# Only load Liquid Prompt in interactive shells, not from a script or from scp
+[[ $- = *i* ]] && source ~/src/liquidprompt/liquidprompt

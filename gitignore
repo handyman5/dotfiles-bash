@@ -1,0 +1,8 @@
+# Generate me! https://www.gitignore.io/
+
+###
+# Emacs
+###
+*~
+.ido.last
+

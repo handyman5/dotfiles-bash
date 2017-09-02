@@ -1,0 +1,14 @@
+[push]
+	default = matching
+[alias]
+    cn = commit --no-verify
+    co = checkout
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    graph = log --color --graph --pretty=format:\"%h | %ad | %an | %s%d\" --date=short
+    hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
+    praise = blame
+    restore = checkout --
+    unstage = reset HEAD --
+    visualise = !gitk
+    wd = diff --word-diff
+    word-diff = diff --word-diff
